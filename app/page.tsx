@@ -218,7 +218,7 @@ function HeroSection() {
               style={{ width: 270, height: 330 }}
             >
               <img
-                src="https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=600"
+                src="/Scr/Ranjani Bw Img.png"
                 alt="B. Ranjani"
                 className="w-full h-full object-cover object-top grayscale"
               />
@@ -297,7 +297,7 @@ function AboutSection() {
               style={{ width: 220, height: 260 }}
             >
               <img
-                src="https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=600"
+                src="/Scr/Ranjani Bw Img.png"
                 alt="B. Ranjani"
                 className="w-full h-full object-cover object-top grayscale"
               />
