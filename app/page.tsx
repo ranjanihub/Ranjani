@@ -20,41 +20,50 @@ import {
 const services = [
   {
     icon: MonitorSmartphone,
-    title: 'Web Development',
-    desc: 'Modern, responsive websites built with Next.js & React that are fast, SEO-ready, and beautifully designed.',
+    title: 'Data Analysis',
+    desc: 'Data cleaning, EDA, and insights using Python, Pandas and SQL.',
   },
   {
     icon: Search,
-    title: 'SEO Optimization',
-    desc: 'On-page & off-page SEO strategies that improve organic visibility, drive traffic, and generate real leads.',
+    title: 'SEO & Growth',
+    desc: 'Data-driven SEO strategies that improve visibility and generate leads.',
   },
   {
     icon: Code2,
     title: 'Full Stack Dev',
-    desc: 'End-to-end apps using Python, Supabase, and PostgreSQL for robust, scalable solutions.',
+    desc: 'End-to-end apps and dashboards using Python, Next.js and PostgreSQL/Supabase.',
   },
   {
     icon: BrainCircuit,
     title: 'AI Integration',
-    desc: 'AI-powered chatbots and tools using Groq LLM & RAG architecture for intelligent customer interactions.',
+    desc: 'LLM-based solutions, chatbots and RAG pipelines for intelligent automation.',
   },
 ];
 
 const skills = [
-  'Next.js', 'React.js', 'TypeScript', 'Python',
-  'Supabase', 'PostgreSQL', 'Firebase', 'Figma',
-  'SEO', 'On-Page SEO', 'N8N', 'Git',
+  'Python', 'Pandas', 'NumPy', 'SQL', 'Power BI',
+  'Matplotlib', 'Seaborn', 'Scikit-learn', 'TensorFlow', 'Keras',
+  'R', 'Git', 'Figma', 'SEO',
 ];
 
 const experience = [
   {
-    role: 'SEO Intern',
+    role: 'SEO Intern & AI Developer',
     company: 'Nettyfish Solutions Pvt. Ltd.',
     period: 'Apr 2026 – Present',
     points: [
-      'On-Page & Off-Page SEO to boost visibility and lead generation.',
-      'Built Wacto AI Chatbot using Groq LLM & RAG architecture.',
-      'Developed Phone Number Filtering App using Streamlit.',
+      'Executed on-page and off-page SEO strategies to improve visibility and lead generation.',
+      'Built the Wacto AI Chatbot using Groq LLM and RAG architecture.',
+      'Developed a Phone Number Filtering system using Python and Streamlit for lead validation and processing.',
+    ],
+  },
+  {
+    role: 'Data Analyst Intern',
+    company: 'Vulture Lines Pvt Ltd, Anna Nagar',
+    period: 'Feb 2025 – Mar 2025',
+    points: [
+      'Cleaned and analyzed customer data using Pandas/NumPy to derive business insights.',
+      'Built Power BI dashboards visualizing customer metrics for stakeholders.',
     ],
   },
   {
@@ -62,13 +71,31 @@ const experience = [
     company: 'Hexpertify',
     period: 'Sep 2025 – Dec 2025',
     points: [
-      'Designed UI for live website using Figma in team environment.',
-      'Applied SEO meta-tag optimisation on the MoodLift project.',
+      'Designed UI for the MoodLift platform using Figma and collaborated with the development team.',
+      'Implemented SEO meta-tag optimization to improve search visibility for the MoodLift project.',
     ],
   },
 ];
 
 const projects = [
+  {
+    name: 'Chatbot SaaS Model',
+    subtitle: 'AI chatbot platform built using RAG',
+    stack: ['Next.js', 'Groq', 'RAG'],
+    url: 'wacto-chat-bot.vercel.app',
+    href: 'https://wacto-chat-bot.vercel.app/',
+    desc: 'A chatbot SaaS model built using RAG architecture for intelligent, retrieval-augmented conversations.',
+    img: 'https://plain-apac-prod-public.komododecks.com/202607/08/1q2FQvHrjQWmVDwjxfHc/image.png?auto=compress&cs=tinysrgb&w=800',
+  },
+  {
+    name: 'Zepto Inventory Analysis',
+    subtitle: 'E‑commerce inventory & revenue analysis (SQL)',
+    stack: ['PostgreSQL', 'SQL', 'Power BI'],
+    url: 'github.com/ranjanihub/zepto_inventory_analysis',
+    href: 'https://github.com/ranjanihub/zepto_inventory_analysis',
+    desc: 'SQL analysis and Power BI dashboards highlighting stock, pricing and revenue insights for an e-commerce dataset.',
+    img: 'https://plain-apac-prod-public.komododecks.com/202607/08/LY1X9FVF0ObnO2tO8MkW/image.jpg?auto=compress&cs=tinysrgb&w=800',
+  },
   {
     name: 'MoodLift',
     subtitle: 'Mental Health Tracking Platform',
@@ -76,16 +103,7 @@ const projects = [
     url: 'moodlift.hexpertify.com',
     href: 'https://moodlift.hexpertify.com',
     desc: 'Full stack mood tracking platform with wellness activities. Integrated Supabase for data storage and SEO tags for search visibility.',
-    img: 'https://images.pexels.com/photos/5699456/pexels-photo-5699456.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-  {
-    name: 'SkillSwap',
-    subtitle: 'Microlearning Skill Exchange Platform',
-    stack: ['Next.js', 'Supabase'],
-    url: 'skill-swap-zeta-seven.vercel.app',
-    href: 'https://skill-swap-zeta-seven.vercel.app',
-    desc: 'Peer-to-peer skill exchange platform with a matching system connecting users based on their teaching and learning interests.',
-    img: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
+    img: 'https://plain-apac-prod-public.komododecks.com/202607/08/c5WduzAbfmHRJNtCgD2E/image.png?auto=compress&cs=tinysrgb&w=800',
   },
 ];
 
@@ -151,7 +169,7 @@ function HeroSection() {
           {/* Quote + pill */}
           <div className="flex items-center gap-4">
             <span className="font-display text-[#f5b800] text-7xl leading-none select-none">"</span>
-            <span className="pill-tag text-sm">Website &amp; SEO</span>
+            <span className="pill-tag text-sm">Data &amp; AI</span>
           </div>
 
           {/* Big title */}
@@ -160,9 +178,7 @@ function HeroSection() {
               className="font-display text-black leading-[0.88] select-none"
               style={{ fontSize: 'clamp(5rem, 13vw, 10rem)' }}
             >
-              PORTO
-              <br />
-              FOLIO<span className="text-[#f5b800]">.</span>
+              B.RANJANI
             </h1>
 
             {/* Floating deco icons */}
@@ -191,12 +207,12 @@ function HeroSection() {
             <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center">
               <ChevronRight size={14} color="#f5b800" />
             </div>
-            <span className="font-body font-bold text-lg text-[#1a1a1a]">B. Ranjani</span>
+            <span className="font-body font-bold text-lg text-[#1a1a1a]">Where AI Meets Data & Development</span>
           </div>
 
           {/* Tagline */}
           <p className="font-body text-sm text-black/55 max-w-sm leading-relaxed">
-            Full Stack Developer &amp; SEO Specialist crafting high-performance websites that rank and convert.
+            Aspiring Data Analyst with hands-on experience in data analysis, SEO, and AI-powered application development. Skilled in Python, SQL, Power BI, and business intelligence, with experience building LLM-based solutions and driving lead generation through data-driven SEO strategies.
           </p>
 
           {/* Selected best — bottom right on desktop */}
@@ -227,20 +243,16 @@ function HeroSection() {
             <div className="absolute -top-6 -left-6 w-20 h-20 rounded-full border-4 border-[#f5b800] z-20" />
           </div>
 
-          {/* Stat chips */}
-          <div className="flex gap-3 mt-4">
-            <div className="bg-[#1a1a1a] rounded-2xl px-4 py-3 text-center">
-              <p className="font-display text-[#f5b800] text-xl">2+</p>
-              <p className="font-body text-[10px] text-white/60 mt-0.5">Yrs Exp</p>
-            </div>
-            <div className="bg-[#f5b800] rounded-2xl px-4 py-3 text-center">
-              <p className="font-display text-black text-xl">10+</p>
-              <p className="font-body text-[10px] text-black/60 mt-0.5">Projects</p>
-            </div>
-            <div className="bg-white rounded-2xl px-4 py-3 text-center shadow-sm">
-              <p className="font-display text-xl">SEO</p>
-              <p className="font-body text-[10px] text-black/45 mt-0.5">Expert</p>
-            </div>
+          {/* Resume download */}
+          <div className="mt-4">
+            <a
+              href="/Scr/Ranjani Resume.pdf"
+              download
+              className="inline-flex items-center gap-2 rounded-2xl bg-[#1a1a1a] px-5 py-3 font-body text-sm font-bold text-[#f5b800] transition-colors hover:bg-black"
+            >
+              Download Resume
+              <ArrowRight size={14} />
+            </a>
           </div>
         </div>
       </div>
@@ -343,13 +355,10 @@ function AboutSection() {
 
           {/* Bio */}
           <p className="font-body text-sm text-black/70 leading-relaxed max-w-xl -mt-2">
-            I&apos;m <strong>B. Ranjani</strong>, a Full Stack Developer and SEO Specialist pursuing
-            B.Tech in Artificial Intelligence &amp; Data Science at DMI College of Engineering, Chennai (CGPA 8.6).
-            I build fast, modern websites and craft SEO strategies that drive real organic traffic and conversions.
+            I&apos;m <strong>B. Ranjani</strong>, an aspiring Data Analyst with hands-on experience in data analysis, SEO, and AI-powered application development. I build data pipelines, dashboards and ML-backed tools that help teams make informed, measurable decisions.
           </p>
           <p className="font-body text-sm text-black/70 leading-relaxed max-w-xl -mt-4">
-            I also build AI-powered tools using Groq LLM and RAG architecture. For me, great web work
-            is where beautiful design meets technical precision and searchability.
+            Skilled in Python, SQL and Power BI, I also build LLM-based solutions (Groq LLM + RAG) to automate workflows and improve customer experiences.
           </p>
 
           {/* Education + Skills */}
@@ -373,7 +382,7 @@ function AboutSection() {
                     DMI College of Engineering, Chennai
                   </p>
                   <span className="inline-block font-body text-xs text-black font-bold bg-[#f5b800] px-2 py-0.5 rounded-full mt-2">
-                    CGPA: 8.6
+                    CGPA: 8.4
                   </span>
                 </div>
               </div>
@@ -594,6 +603,30 @@ function ProjectsSection() {
 /* ─── CONTACT SECTION ────────────────────────────────────────── */
 
 function ContactSection() {
+  const { useState } = require('react');
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [status, setStatus] = useState('idle');
+
+  async function handleSubmit(e: any) {
+    e.preventDefault();
+    setStatus('sending');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch (err) {
+      setStatus('error');
+    }
+    setTimeout(() => setStatus('idle'), 4000);
+  }
   return (
     <section
       id="contact"
@@ -639,7 +672,7 @@ function ContactSection() {
             {[
               { num: '2+', label: 'Years Experience' },
               { num: '10+', label: 'Projects Delivered' },
-              { num: '8.6', label: 'CGPA Score' },
+              { num: '8.4', label: 'CGPA Score' },
             ].map(({ num, label }) => (
               <div key={label}>
                 <p className="font-display text-[#f5b800] text-3xl">{num}</p>
@@ -649,38 +682,66 @@ function ContactSection() {
           </div>
         </div>
 
-        {/* Right: contact links */}
+        {/* Right: contact form */}
         <div className="flex-1 flex flex-col gap-4 w-full">
-          {[
-            { icon: Mail, label: 'Email', value: 'ranjaniranjani5694@gmail.com', href: 'mailto:ranjaniranjani5694@gmail.com' },
-            { icon: Phone, label: 'Phone', value: '+91 7358724578', href: 'tel:+917358724578' },
-            { icon: Linkedin, label: 'LinkedIn', value: 'linkedin.com/in/ranjani8', href: 'https://www.linkedin.com/in/ranjani8' },
-            { icon: Github, label: 'GitHub', value: 'github.com/ranjanihub', href: 'https://github.com/ranjanihub' },
-          ].map(({ icon: Icon, label, value, href }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 bg-white/5 hover:bg-[#f5b800]/10 border border-white/8 hover:border-[#f5b800]/40 rounded-2xl px-5 py-4 transition-all duration-200 group"
-            >
-              <div className="w-10 h-10 rounded-full bg-[#f5b800] flex items-center justify-center flex-shrink-0">
-                <Icon size={16} color="#1a1a1a" />
+          <form onSubmit={handleSubmit} className="bg-white/5 p-6 rounded-2xl border border-white/8">
+            <div className="grid grid-cols-1 gap-3">
+              <input
+                aria-label="Name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                placeholder="Your name"
+                className="w-full px-4 py-3 rounded-lg border border-white/10 bg-white text-[#1a1a1a] placeholder:text-black/40 focus:border-[#f5b800] focus:outline-none"
+                required
+              />
+              <input
+                aria-label="Email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                placeholder="Your email"
+                type="email"
+                className="w-full px-4 py-3 rounded-lg border border-white/10 bg-white text-[#1a1a1a] placeholder:text-black/40 focus:border-[#f5b800] focus:outline-none"
+                required
+              />
+              <input
+                aria-label="Subject"
+                value={formData.subject}
+                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                placeholder="Subject (optional)"
+                className="w-full px-4 py-3 rounded-lg border border-white/10 bg-white text-[#1a1a1a] placeholder:text-black/40 focus:border-[#f5b800] focus:outline-none"
+              />
+              <textarea
+                aria-label="Message"
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                placeholder="Message"
+                rows={5}
+                className="w-full px-4 py-3 rounded-lg border border-white/10 bg-white text-[#1a1a1a] placeholder:text-black/40 focus:border-[#f5b800] focus:outline-none"
+                required
+              />
+              <div className="flex items-center gap-3">
+                <button
+                  type="submit"
+                  className="bg-[#f5b800] text-black font-bold px-4 py-2 rounded-lg"
+                  disabled={status === 'sending'}
+                >
+                  {status === 'sending' ? 'Sending...' : 'Send Message'}
+                </button>
+                <span className="font-body text-sm text-white/60">
+                  {status === 'success' && 'Message sent — I will reply soon.'}
+                  {status === 'error' && 'Failed to send. Configure SMTP or try again.'}
+                </span>
               </div>
-              <div className="flex-1 min-w-0">
-                <p className="font-body text-xs text-white/35">{label}</p>
-                <p className="font-body text-sm text-white font-semibold truncate">{value}</p>
-              </div>
-              <ArrowRight size={15} color="rgba(255,255,255,0.25)" />
-            </a>
-          ))}
+            </div>
+          </form>
+          <div className="mt-2 text-xs text-white/40">Or contact directly: <a className="underline" href="mailto:ranjaniranjani5694@gmail.com">ranjaniranjani5694@gmail.com</a></div>
         </div>
       </div>
 
       {/* Footer */}
       <div className="relative z-10 mt-16 pt-8 border-t border-white/8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="font-body text-white/25 text-xs">
-          © 2026 B. Ranjani — Full Stack Developer &amp; SEO Specialist
+          <p className="font-body text-white/25 text-xs">
+          © 2026 B. Ranjani — Aspiring Data Analyst &amp; AI Developer
         </p>
         <div className="flex items-center gap-6">
           {['About', 'Services', 'Projects', 'Contact'].map((item) => (
