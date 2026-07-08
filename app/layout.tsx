@@ -14,9 +14,9 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'B. Ranjani — Full Stack Developer & SEO Specialist',
+  title: 'B. Ranjani',
   description:
-    'Portfolio of B. Ranjani — Full Stack Developer and SEO Specialist. Building high-performance websites and driving organic growth.',
+    'Portfolio of B. Ranjani. Building high-performance websites and driving organic growth.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
