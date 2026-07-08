@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import {
   Mail,
   Phone,
@@ -110,36 +112,97 @@ const projects = [
 /* ─── NAVBAR ─────────────────────────────────────────────────── */
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 md:px-16 py-4"
-      style={{ background: 'rgba(232,232,224,0.88)', backdropFilter: 'blur(14px)' }}
+      className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 md:px-16 py-3 sm:py-4"
+      style={{ background: 'rgba(232,232,224,0.92)', backdropFilter: 'blur(14px)' }}
     >
-      <div className="flex items-center gap-2">
-        <div className="w-8 h-8 rounded-full bg-[#f5b800] flex items-center justify-center">
-          <span className="font-display text-black text-xs font-bold">R</span>
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2 min-w-0">
+          <div className="w-8 h-8 rounded-full bg-[#f5b800] flex items-center justify-center flex-shrink-0">
+            <span className="font-display text-black text-xs font-bold">R</span>
+          </div>
+          <span className="font-display text-black text-base sm:text-lg tracking-tight truncate">RANJANI</span>
         </div>
-        <span className="font-display text-black text-lg tracking-tight">RANJANI</span>
-      </div>
 
-      <div className="hidden md:flex items-center gap-8">
-        {['About', 'Services', 'Projects', 'Contact'].map((item) => (
+        <div className="hidden md:flex items-center gap-8">
+          {['About', 'Services', 'Projects', 'Contact'].map((item) => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="nav-link font-body text-sm font-semibold text-[#1a1a1a] hover:text-[#f5b800] transition-colors"
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+
+        <div className="hidden md:flex items-center gap-3">
           <a
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            className="nav-link font-body text-sm font-semibold text-[#1a1a1a] hover:text-[#f5b800] transition-colors"
+            href="/Scr/Ranjani Resume.pdf"
+            download
+            className="inline-flex items-center gap-2 bg-white text-black border border-black/10 font-body font-bold text-sm px-5 py-2.5 rounded-full hover:bg-black hover:text-white transition-all duration-200"
           >
-            {item}
+            Resume <ArrowRight size={14} />
           </a>
-        ))}
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 bg-[#1a1a1a] text-[#f5b800] font-body font-bold text-sm px-5 py-2.5 rounded-full hover:bg-[#f5b800] hover:text-black transition-all duration-200"
+          >
+            Hire Me <ArrowRight size={14} />
+          </a>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setMenuOpen((value) => !value)}
+          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white text-black"
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
+        >
+          <span className="relative h-4 w-5">
+            <span className={`absolute left-0 top-0 h-0.5 w-5 rounded-full bg-black transition-transform ${menuOpen ? 'translate-y-2 rotate-45' : ''}`} />
+            <span className={`absolute left-0 top-1.5 h-0.5 w-5 rounded-full bg-black transition-opacity ${menuOpen ? 'opacity-0' : 'opacity-100'}`} />
+            <span className={`absolute left-0 top-3 h-0.5 w-5 rounded-full bg-black transition-transform ${menuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
+          </span>
+        </button>
       </div>
 
-      <a
-        href="#contact"
-        className="hidden md:inline-flex items-center gap-2 bg-[#1a1a1a] text-[#f5b800] font-body font-bold text-sm px-5 py-2.5 rounded-full hover:bg-[#f5b800] hover:text-black transition-all duration-200"
-      >
-        Hire Me <ArrowRight size={14} />
-      </a>
+      {menuOpen ? (
+        <div className="md:hidden mt-3 rounded-3xl border border-black/10 bg-[#f3f0e7] p-4 shadow-lg">
+          <div className="flex flex-col gap-2">
+            {['About', 'Services', 'Projects', 'Contact'].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                onClick={() => setMenuOpen(false)}
+                className="rounded-2xl px-4 py-3 font-body text-sm font-semibold text-[#1a1a1a] hover:bg-white"
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+          <div className="mt-4 flex flex-col gap-3">
+            <a
+              href="/Scr/Ranjani Resume.pdf"
+              download
+              onClick={() => setMenuOpen(false)}
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-4 py-3 font-body text-sm font-bold text-black border border-black/10"
+            >
+              Download Resume <ArrowRight size={14} />
+            </a>
+            <a
+              href="#contact"
+              onClick={() => setMenuOpen(false)}
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#1a1a1a] px-4 py-3 font-body text-sm font-bold text-[#f5b800]"
+            >
+              Hire Me <ArrowRight size={14} />
+            </a>
+          </div>
+        </div>
+      ) : null}
     </nav>
   );
 }
@@ -151,32 +214,32 @@ function HeroSection() {
     <section
       id="hero"
       className="relative min-h-screen overflow-hidden flex flex-col"
-      style={{ background: '#e8e8e0', paddingTop: '80px' }}
+      style={{ background: '#e8e8e0', paddingTop: '72px' }}
     >
       {/* Vertical side label */}
-      <div className="hidden lg:flex absolute right-5 top-1/2 -translate-y-1/2 z-10">
+      <div className="hidden xl:flex absolute right-5 top-1/2 -translate-y-1/2 z-10">
         <span className="vertical-text font-body text-xs font-bold tracking-[0.35em] text-black/25">
           RANJANI — 2026
         </span>
       </div>
 
       {/* Section number watermark */}
-      <div className="section-num" style={{ bottom: '-2rem', left: '-1rem' }}>01</div>
+      <div className="section-num hidden sm:block" style={{ bottom: '-2rem', left: '-1rem' }}>01</div>
 
-      <div className="relative z-10 flex-1 flex flex-col lg:flex-row items-center px-8 md:px-16 pt-8 pb-8 gap-8 lg:gap-16">
+      <div className="relative z-10 flex-1 flex flex-col lg:flex-row items-center px-4 sm:px-6 md:px-16 pt-8 pb-8 gap-10 lg:gap-16">
         {/* Left: text */}
         <div className="flex-1 flex flex-col gap-5">
           {/* Quote + pill */}
-          <div className="flex items-center gap-4">
-            <span className="font-display text-[#f5b800] text-7xl leading-none select-none">"</span>
-            <span className="pill-tag text-sm">Data &amp; AI</span>
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            <span className="font-display text-[#f5b800] text-5xl sm:text-7xl leading-none select-none">"</span>
+            <span className="pill-tag text-xs sm:text-sm">Data &amp; AI</span>
           </div>
 
           {/* Big title */}
           <div className="relative">
             <h1
               className="font-display text-black leading-[0.88] select-none"
-              style={{ fontSize: 'clamp(5rem, 13vw, 10rem)' }}
+              style={{ fontSize: 'clamp(3.25rem, 16vw, 10rem)' }}
             >
               B.RANJANI
             </h1>
@@ -203,11 +266,11 @@ function HeroSection() {
           </div>
 
           {/* Name row */}
-          <div className="flex items-center gap-3 mt-2">
+          <div className="flex flex-wrap items-center gap-3 mt-2">
             <div className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center">
               <ChevronRight size={14} color="#f5b800" />
             </div>
-            <span className="font-body font-bold text-lg text-[#1a1a1a]">Where AI Meets Data & Development</span>
+            <span className="font-body font-bold text-sm sm:text-lg text-[#1a1a1a]">Where AI Meets Data & Development</span>
           </div>
 
           {/* Tagline */}
@@ -230,8 +293,7 @@ function HeroSection() {
           <div className="relative">
             <div className="absolute -bottom-4 -right-4 w-full h-full rounded-3xl bg-[#f5b800] z-0" />
             <div
-              className="relative z-10 rounded-3xl overflow-hidden shadow-xl"
-              style={{ width: 270, height: 330 }}
+              className="relative z-10 rounded-3xl overflow-hidden shadow-xl w-[220px] h-[270px] sm:w-[270px] sm:h-[330px]"
             >
               <img
                 src="/Scr/Ranjani Bw Img.png"
@@ -258,7 +320,7 @@ function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="relative z-10 flex justify-center pb-8">
+      <div className="relative z-10 flex justify-center pb-6 sm:pb-8">
         <div className="flex flex-col items-center gap-2 animate-bounce">
           <div className="w-5 h-9 border-2 border-black/25 rounded-full flex justify-center pt-2">
             <div className="w-1 h-2 bg-[#f5b800] rounded-full" />
@@ -276,18 +338,18 @@ function AboutSection() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden py-24 px-8 md:px-16"
+      className="relative overflow-hidden py-16 md:py-24 px-4 sm:px-6 md:px-16"
       style={{ background: '#efefea' }}
     >
       {/* Vertical side label */}
-      <div className="hidden lg:flex absolute right-5 top-1/2 -translate-y-1/2 z-10">
+      <div className="hidden xl:flex absolute right-5 top-1/2 -translate-y-1/2 z-10">
         <span className="vertical-text font-body text-xs font-bold tracking-[0.35em] text-black/20">
           RANJANI — 2026
         </span>
       </div>
 
       {/* Section number watermark */}
-      <div className="section-num" style={{ bottom: '-4rem', left: '-2rem' }}>02</div>
+      <div className="section-num hidden sm:block" style={{ bottom: '-4rem', left: '-2rem' }}>02</div>
 
       {/* Header row */}
       <div className="flex items-center gap-4 mb-12 relative z-10">
@@ -298,15 +360,14 @@ function AboutSection() {
         </div>
       </div>
 
-      <div className="relative z-10 flex flex-col lg:flex-row gap-12">
+      <div className="relative z-10 flex flex-col lg:flex-row gap-10 lg:gap-12">
         {/* Left column: photo + contact */}
         <div className="flex flex-col gap-6 items-start lg:w-64 flex-shrink-0">
           {/* Photo */}
           <div className="relative">
             <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl bg-[#f5b800] z-0" />
             <div
-              className="relative z-10 rounded-2xl overflow-hidden border-4 border-white shadow-lg"
-              style={{ width: 220, height: 260 }}
+              className="relative z-10 rounded-2xl overflow-hidden border-4 border-white shadow-lg w-full max-w-[180px] sm:max-w-[220px] h-[210px] sm:h-[260px]"
             >
               <img
                 src="/Scr/Ranjani Bw Img.png"
@@ -348,7 +409,7 @@ function AboutSection() {
           {/* Hello */}
           <div className="flex items-start gap-3">
             <span className="font-display text-[#f5b800] text-5xl leading-none mt-1 select-none">"</span>
-            <h2 className="font-display text-black" style={{ fontSize: 'clamp(2.5rem,6vw,4rem)' }}>
+            <h2 className="font-display text-black" style={{ fontSize: 'clamp(2.25rem,6vw,4rem)' }}>
               HELLO<span className="text-[#f5b800]">.</span>
             </h2>
           </div>
@@ -445,18 +506,18 @@ function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden py-24 px-8 md:px-16"
+      className="relative overflow-hidden py-16 md:py-24 px-4 sm:px-6 md:px-16"
       style={{ background: '#e8e8e0' }}
     >
       {/* Vertical side label */}
-      <div className="hidden lg:flex absolute right-5 top-1/2 -translate-y-1/2 z-10">
+      <div className="hidden xl:flex absolute right-5 top-1/2 -translate-y-1/2 z-10">
         <span className="vertical-text font-body text-xs font-bold tracking-[0.35em] text-black/20">
           RANJANI — 2026
         </span>
       </div>
 
       {/* Section number watermark */}
-      <div className="section-num" style={{ bottom: '-4rem', left: '-2rem' }}>03</div>
+      <div className="section-num hidden sm:block" style={{ bottom: '-4rem', left: '-2rem' }}>03</div>
 
       {/* Header row */}
       <div className="flex items-center gap-4 mb-16 relative z-10">
@@ -483,18 +544,18 @@ function ServicesSection() {
       </div>
 
       {/* Cards */}
-      <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-5">
+      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {services.map(({ icon: Icon, title, desc }) => (
           <div
             key={title}
-            className="service-card bg-[#f5b800] rounded-3xl p-6 flex flex-col items-center text-center gap-4 shadow-md cursor-default"
+            className="service-card bg-[#f5b800] rounded-3xl p-5 sm:p-6 flex flex-col items-center text-center gap-4 shadow-md cursor-default"
           >
-            <div className="w-16 h-16 rounded-2xl bg-black/10 flex items-center justify-center">
-              <Icon size={32} strokeWidth={1.4} color="#1a1a1a" />
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-black/10 flex items-center justify-center">
+              <Icon size={28} className="sm:size-8" strokeWidth={1.4} color="#1a1a1a" />
             </div>
             <div>
               <p className="font-body font-bold text-sm text-[#1a1a1a] mb-2 leading-tight">{title}</p>
-              <p className="font-body text-xs text-black/65 leading-relaxed">{desc}</p>
+              <p className="font-body text-[11px] sm:text-xs text-black/65 leading-relaxed">{desc}</p>
             </div>
           </div>
         ))}
@@ -509,18 +570,18 @@ function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative overflow-hidden py-24 px-8 md:px-16"
+      className="relative overflow-hidden py-16 md:py-24 px-4 sm:px-6 md:px-16"
       style={{ background: '#efefea' }}
     >
       {/* Vertical side label */}
-      <div className="hidden lg:flex absolute right-5 top-1/2 -translate-y-1/2 z-10">
+      <div className="hidden xl:flex absolute right-5 top-1/2 -translate-y-1/2 z-10">
         <span className="vertical-text font-body text-xs font-bold tracking-[0.35em] text-black/20">
           RANJANI — 2026
         </span>
       </div>
 
       {/* Section number watermark */}
-      <div className="section-num" style={{ bottom: '-4rem', left: '-2rem' }}>04</div>
+      <div className="section-num hidden sm:block" style={{ bottom: '-4rem', left: '-2rem' }}>04</div>
 
       {/* Header row */}
       <div className="flex items-center gap-4 mb-12 relative z-10">
@@ -545,13 +606,13 @@ function ProjectsSection() {
       </div>
 
       {/* Cards */}
-      <div className="relative z-10 grid md:grid-cols-2 gap-8">
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.map((proj) => (
           <div
             key={proj.name}
             className="project-card bg-white rounded-3xl overflow-hidden shadow-sm border border-black/5"
           >
-            <div className="relative h-52 overflow-hidden">
+            <div className="relative h-44 sm:h-52 overflow-hidden">
               <img
                 src={proj.img}
                 alt={proj.name}
@@ -630,31 +691,31 @@ function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden py-24 px-8 md:px-16"
+      className="relative overflow-hidden py-16 md:py-24 px-4 sm:px-6 md:px-16"
       style={{ background: '#1a1a1a' }}
     >
       {/* Section number watermark */}
       <div
-        className="section-num"
+        className="section-num hidden sm:block"
         style={{ bottom: '-4rem', left: '-2rem', color: 'rgba(255,255,255,0.04)' }}
       >
         05
       </div>
 
       {/* Vertical side label */}
-      <div className="hidden lg:flex absolute right-5 top-1/2 -translate-y-1/2 z-10">
+      <div className="hidden xl:flex absolute right-5 top-1/2 -translate-y-1/2 z-10">
         <span className="vertical-text font-body text-xs font-bold tracking-[0.35em] text-white/18">
           RANJANI — 2026
         </span>
       </div>
 
-      <div className="relative z-10 flex flex-col lg:flex-row items-start gap-16">
+      <div className="relative z-10 flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
         {/* Left */}
         <div className="flex-1">
           <span className="font-display text-[#f5b800] text-5xl leading-none select-none">"</span>
           <h2
             className="font-display text-white leading-none mt-2 mb-6"
-            style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}
+            style={{ fontSize: 'clamp(2.2rem, 11vw, 6rem)' }}
           >
             LET&apos;S
             <br />
@@ -668,7 +729,7 @@ function ContactSection() {
           </p>
 
           {/* Stats */}
-          <div className="flex gap-8 mt-10">
+          <div className="flex flex-wrap gap-6 sm:gap-8 mt-10">
             {[
               { num: '2+', label: 'Years Experience' },
               { num: '10+', label: 'Projects Delivered' },
@@ -684,7 +745,7 @@ function ContactSection() {
 
         {/* Right: contact form */}
         <div className="flex-1 flex flex-col gap-4 w-full">
-          <form onSubmit={handleSubmit} className="bg-white/5 p-6 rounded-2xl border border-white/8">
+          <form onSubmit={handleSubmit} className="bg-white/5 p-4 sm:p-6 rounded-2xl border border-white/8">
             <div className="grid grid-cols-1 gap-3">
               <input
                 aria-label="Name"
@@ -719,31 +780,31 @@ function ContactSection() {
                 className="w-full px-4 py-3 rounded-lg border border-white/10 bg-white text-[#1a1a1a] placeholder:text-black/40 focus:border-[#f5b800] focus:outline-none"
                 required
               />
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                 <button
                   type="submit"
-                  className="bg-[#f5b800] text-black font-bold px-4 py-2 rounded-lg"
+                  className="bg-[#f5b800] text-black font-bold px-4 py-2 rounded-lg w-full sm:w-auto"
                   disabled={status === 'sending'}
                 >
                   {status === 'sending' ? 'Sending...' : 'Send Message'}
                 </button>
-                <span className="font-body text-sm text-white/60">
+                <span className="font-body text-sm text-white/60 leading-relaxed">
                   {status === 'success' && 'Message sent — I will reply soon.'}
                   {status === 'error' && 'Failed to send. Configure SMTP or try again.'}
                 </span>
               </div>
             </div>
           </form>
-          <div className="mt-2 text-xs text-white/40">Or contact directly: <a className="underline" href="mailto:ranjaniranjani5694@gmail.com">ranjaniranjani5694@gmail.com</a></div>
+          <div className="mt-2 text-xs text-white/40 break-words">Or contact directly: <a className="underline" href="mailto:ranjaniranjani5694@gmail.com">ranjaniranjani5694@gmail.com</a></div>
         </div>
       </div>
 
       {/* Footer */}
       <div className="relative z-10 mt-16 pt-8 border-t border-white/8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-body text-white/25 text-xs">
+          <p className="font-body text-white/25 text-xs text-center md:text-left">
           © 2026 B. Ranjani — Aspiring Data Analyst &amp; AI Developer
         </p>
-        <div className="flex items-center gap-6">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
           {['About', 'Services', 'Projects', 'Contact'].map((item) => (
             <a
               key={item}
